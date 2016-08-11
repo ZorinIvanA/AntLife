@@ -16,11 +16,18 @@ namespace AntLife.Commands
         public AsyncPageCommand(ExecuteAsyncCommand handler)
         {
             ExecuteAsync = handler;
+            _canExecute = true;
+        }
+
+        private Boolean _canExecute;
+        public Boolean CanBeExecuted
+        {            
+            set { _canExecute = value; }
         }
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            return _canExecute;
         }
 
         public void Execute(object parameter)
